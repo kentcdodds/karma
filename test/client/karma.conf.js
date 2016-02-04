@@ -149,7 +149,7 @@ module.exports = function (config) {
       'karma-sauce-launcher'
     ],
 
-    concurrency: 3,
+    concurrency: 2,
 
     forceJSONP: true
   })

@@ -54,10 +54,14 @@ describe('stringify', function () {
     assert(stringify(obj).indexOf("{a: 'a'}") > -1)
 
     obj = {constructor: null}
-    assert(stringify(obj).indexOf('{constructor: null}') > -1)
+
+    // IE 7 serializes this to Object{}
+    var s = stringify(obj)
+    assert(s.indexOf('{constructor: null}') > -1 || s.indexOf('Object{}') > -1)
 
     obj = Object.create(null)
     obj.a = 'a'
+
     assert(stringify(obj).indexOf("{a: 'a'}") > -1)
   })
 
